@@ -1,0 +1,24 @@
+{
+  "name": "epoch-integration-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sample Node.js script demonstrating Epoch swap-and-bridge integration (Sepolia → Base Sepolia on testnet)",
+  "scripts": {
+    "swap-and-bridge": "tsx src/swap-and-bridge.ts",
+    "quote": "tsx src/swap-and-bridge.ts --quote-only"
+  },
+  "dependencies": {
+    "@epoch-protocol/epoch-intents-sdk": "^1.0.23",
+    "dotenv": "^16.4.7",
+    "viem": "^2.29.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
