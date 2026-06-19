@@ -34,6 +34,7 @@ import { privateKeyToAccount } from "viem/accounts";
 import { sepolia } from "viem/chains";
 import {
   DESTINATION_CHAIN_ID,
+  DEFAULT_SEPOLIA_RPC_URL,
   INPUT_AMOUNT,
   INPUT_TOKEN_SYMBOL,
   OUTPUT_TOKEN_SYMBOL,
@@ -73,6 +74,7 @@ async function main() {
   );
 
   const tokenInAmount = parseUnits(INPUT_AMOUNT, inputToken.decimals);
+  const sepoliaRpc = getSepoliaRpcUrl();
 
   console.log("Epoch swap-and-bridge demo (testnet)");
   console.log("====================================");
@@ -83,13 +85,24 @@ async function main() {
   );
   console.log(`Input:       ${INPUT_AMOUNT} ${inputToken.symbol}`);
   console.log(`Slippage:    ${SLIPPAGE_BPS / 100}%`);
+  console.log(
+    `Sepolia RPC: ${sepoliaRpc === DEFAULT_SEPOLIA_RPC_URL ? `${sepoliaRpc} (default)` : sepoliaRpc}`,
+  );
   console.log(`Mode:        ${quoteOnly ? "quote-only" : "full execution"}`);
   console.log("");
 
+  const sepoliaChain = {
+    ...sepolia,
+    rpcUrls: {
+      ...sepolia.rpcUrls,
+      default: { http: [sepoliaRpc] },
+    },
+  };
+
   const walletClient = createWalletClient({
     account,
-    chain: sepolia,
-    transport: http(getSepoliaRpcUrl()),
+    chain: sepoliaChain,
+    transport: http(sepoliaRpc),
   });
 
   const sdk = new EpochIntentSDK({
@@ -159,6 +172,15 @@ async function main() {
   if (quoteOnly) {
     console.log("Quote-only mode — stopping before solveIntent.");
     return;
+  }
+
+  if (quoteResult.tokenOut) {
+    intentData.minTokenOut = applySlippage(
+      BigInt(quoteResult.tokenOut),
+      SLIPPAGE_BPS,
+    ).toString();
+    console.log(`Min token out (after quote + slippage): ${intentData.minTokenOut}`);
+    console.log("");
   }
 
   // 4. Execute: approve (if needed) + deposit + register + submit intent

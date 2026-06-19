@@ -19,6 +19,10 @@ export const SLIPPAGE_BPS = Number(process.env.SLIPPAGE_BPS ?? "100");
 export const ZERO_PROTOCOL_HASH =
   "0x0000000000000000000000000000000000000000000000000000000000000000" as const;
 
+/** Public Sepolia RPC that works from Node.js (Ankr keys often block non-browser origins). */
+export const DEFAULT_SEPOLIA_RPC_URL =
+  "https://ethereum-sepolia-rpc.publicnode.com";
+
 export function requirePrivateKey(): `0x${string}` {
   const key = process.env.PRIVATE_KEY;
   if (!key?.startsWith("0x")) {
@@ -29,6 +33,6 @@ export function requirePrivateKey(): `0x${string}` {
   return key as `0x${string}`;
 }
 
-export function getSepoliaRpcUrl(): string | undefined {
-  return process.env.SEPOLIA_RPC_URL;
+export function getSepoliaRpcUrl(): string {
+  return process.env.SEPOLIA_RPC_URL ?? DEFAULT_SEPOLIA_RPC_URL;
 }

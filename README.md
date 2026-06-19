@@ -50,7 +50,7 @@ npm run swap-and-bridge
 |---|---|---|
 | `PRIVATE_KEY` | — | Required. Sponsor wallet (Sepolia) |
 | `EPOCH_API_BASE_URL` | testnet URL | Epoch allocator API |
-| `SEPOLIA_RPC_URL` | viem public RPC | Optional Sepolia RPC |
+| `SEPOLIA_RPC_URL` | publicnode Sepolia RPC | Sepolia RPC for deposits. Ankr browser keys fail in Node with `Origin not allowed`. |
 | `INPUT_TOKEN_SYMBOL` | `USDC` | Source token (testnet graph) |
 | `OUTPUT_TOKEN_SYMBOL` | `PENGU` | Destination token |
 | `INPUT_AMOUNT` | `1` | Human-readable input amount |
@@ -80,3 +80,26 @@ See the [Epoch Intents SDK](https://github.com/epochprotocol/smallocator/tree/de
 ## Security
 
 Never commit `.env` or real private keys. This demo is for testnet only.
+
+## Troubleshooting
+
+### `Origin not allowed` from Ankr RPC
+
+Ankr RPC keys in `.env` often block server-side (Node.js) requests. Remove `SEPOLIA_RPC_URL` to use the default public RPC, or set:
+
+```bash
+SEPOLIA_RPC_URL=https://ethereum-sepolia-rpc.publicnode.com
+```
+
+### `unknown account` on deposit
+
+The published `@epoch-protocol/epoch-intents-sdk` versions before **1.0.24** passed a bare address to viem instead of the local signing account, which breaks Node.js scripts using `privateKeyToAccount`. Upgrade to **1.0.24+** and ensure your wallet client is created with `privateKeyToAccount`.
+
+Ensure your setup looks like:
+
+```typescript
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
+const walletClient = createWalletClient({ account, chain, transport: http(rpcUrl) });
+```
+
+Wagmi/browser wallets work because the wallet extension handles signing.
