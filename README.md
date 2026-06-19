@@ -70,7 +70,7 @@ solveIntent({ ..., quoteResult })   ← SDK approves + deposits + registers
 getIntentStatus(address, nonce)     ← poll until completed
 ```
 
-See the [Epoch Intents SDK](https://github.com/epochprotocol/smallocator/tree/dev/sdk) and its `skills.md` for the full SDK reference.
+See [Integrate Epoch](../docs/docs-new/integration-guides/integrate-epoch.md) and the [SDK Integration Guide](../docs/docs-new/integration-guides/sdk-integration-guide.md) for the full SDK reference.
 
 ## Related projects
 
