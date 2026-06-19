@@ -11,7 +11,7 @@ export const TESTNET_API_BASE_URL =
   "https://testnet-dev.epochprotocol.xyz";
 
 export const INPUT_TOKEN_SYMBOL = process.env.INPUT_TOKEN_SYMBOL ?? "USDC";
-export const OUTPUT_TOKEN_SYMBOL = process.env.OUTPUT_TOKEN_SYMBOL ?? "USDC";
+export const OUTPUT_TOKEN_SYMBOL = process.env.OUTPUT_TOKEN_SYMBOL ?? "PENGU";
 export const INPUT_AMOUNT = process.env.INPUT_AMOUNT ?? "1";
 /** Slippage in basis points (100 = 1%) */
 export const SLIPPAGE_BPS = Number(process.env.SLIPPAGE_BPS ?? "100");

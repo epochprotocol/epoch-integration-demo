@@ -8,7 +8,7 @@
  *   4. solveIntent (deposit + register + submit intent)
  *   5. Poll intent status until complete
  *
- * Example: swap/bridge USDC on Sepolia → USDC on Base Sepolia.
+ * Example: swap/bridge USDC on Sepolia → PENGU on Base Sepolia.
  *
  * Usage:
  *   cp .env.example .env   # set PRIVATE_KEY

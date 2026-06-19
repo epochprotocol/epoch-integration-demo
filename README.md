@@ -10,7 +10,7 @@ Cross-chain **swap and bridge** on **testnet**:
 |---|---|
 | **Source** | Ethereum Sepolia (`11155111`) |
 | **Destination** | Base Sepolia (`84532`) |
-| **Default route** | USDC → USDC |
+| **Default route** | USDC → PENGU |
 | **API** | `https://testnet-dev.epochprotocol.xyz` |
 
 The SDK handles ERC-20 approval, Compact deposit, on-chain registration, and intent submission. Solvers execute the swap/bridge on the destination chain.
@@ -52,7 +52,7 @@ npm run swap-and-bridge
 | `EPOCH_API_BASE_URL` | testnet URL | Epoch allocator API |
 | `SEPOLIA_RPC_URL` | viem public RPC | Optional Sepolia RPC |
 | `INPUT_TOKEN_SYMBOL` | `USDC` | Source token (testnet graph) |
-| `OUTPUT_TOKEN_SYMBOL` | `USDC` | Destination token |
+| `OUTPUT_TOKEN_SYMBOL` | `PENGU` | Destination token |
 | `INPUT_AMOUNT` | `1` | Human-readable input amount |
 | `SLIPPAGE_BPS` | `100` | Slippage in basis points (1%) |
 
