@@ -61,7 +61,7 @@ npm run swap-and-bridge
 ```
 getHealthCheck()
     ↓
-getTaskData({ taskType: GetTokenOut, intentData, extraData })
+getTaskData({ taskType: GetTokenOut, intentData })
     ↓
 getIntentQuote({ sponsorAddress, taskTypeString, intentData })
     ↓

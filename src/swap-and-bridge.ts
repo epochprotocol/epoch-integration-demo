@@ -134,10 +134,8 @@ async function main() {
       protocolHashIdentifier: ZERO_PROTOCOL_HASH,
       recipient: account.address,
     },
-    extraDataTypestring: "uint256 somethingKey",
-    extraData: {
-      somethingKey: "123",
-    },
+    extraDataTypestring: "",
+    extraData: {},
   });
 
   console.log("Task type string:", taskTypeString);
