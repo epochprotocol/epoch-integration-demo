@@ -8,7 +8,7 @@ export const DESTINATION_CHAIN_ID = 84532;
 
 export const TESTNET_API_BASE_URL =
   process.env.EPOCH_API_BASE_URL ??
-  "https://epochintentsdev.epochprotocol.xyz";
+  "https://testnet-dev.epochprotocol.xyz";
 
 export const INPUT_TOKEN_SYMBOL = process.env.INPUT_TOKEN_SYMBOL ?? "USDC";
 export const OUTPUT_TOKEN_SYMBOL = process.env.OUTPUT_TOKEN_SYMBOL ?? "USDC";

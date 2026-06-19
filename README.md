@@ -11,7 +11,7 @@ Cross-chain **swap and bridge** on **testnet**:
 | **Source** | Ethereum Sepolia (`11155111`) |
 | **Destination** | Base Sepolia (`84532`) |
 | **Default route** | USDC → USDC |
-| **API** | `https://epochintentsdev.epochprotocol.xyz` |
+| **API** | `https://testnet-dev.epochprotocol.xyz` |
 
 The SDK handles ERC-20 approval, Compact deposit, on-chain registration, and intent submission. Solvers execute the swap/bridge on the destination chain.
 
