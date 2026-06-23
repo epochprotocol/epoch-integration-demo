@@ -9,7 +9,7 @@
     "quote": "tsx src/swap-and-bridge.ts --quote-only"
   },
   "dependencies": {
-    "@epoch-protocol/epoch-intents-sdk": "^1.0.25",
+    "@epoch-protocol/epoch-intents-sdk": "^1.0.26",
     "dotenv": "^16.4.7",
     "viem": "^2.29.2"
   },
