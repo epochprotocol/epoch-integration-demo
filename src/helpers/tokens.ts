@@ -17,7 +17,7 @@ const graph = testnetGraph as EpochGraph;
 const CHAIN_ID_TO_GRAPH_NAME: Record<number, string> = {
   11155111: "Mainnet", // Sepolia
   84532: "Base", // Base Sepolia
-  80002: "Polygon", // Polygon Amoy
+  11155420: "Optimism", // Optimism Sepolia
 };
 
 export function getGraphChainName(chainId: number): string {
